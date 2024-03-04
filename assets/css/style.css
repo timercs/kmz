@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+#map {
+    height: 600px;
+    z-index: 0;
+}
+
+header {
+    width: 100%;
+    height: 125px;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    z-index: 1;
+}
+
+header .logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+
+}
+
+header .logo h1 {
+    font-size: 1.4rem;
+    color: #eee;
+}
+
+header .logo span {
+    color: #eee;
+}
+
+header .search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+header .search select {
+    height: 25px;
+    width: 90px;
+    border: none;
+    outline: none;
+    font-weight: 700;
+}
+
+header .search button {
+    padding: 7px 20px;
+    background-color: #70ff83;
+    color: #1f1f1f;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    transition: .2s;
+    font-weight: 700;
+}
+
+header .search button:hover {
+    background-color: #70ff83d8;
+    cursor: pointer;
+}
+
+footer {
+    width: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+footer .info {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 20px 0;
+    background-color: #222;
+    color: #eee;
+
+}
+
+footer .info p {
+    font-size: .7rem;
+    font-weight: 700;
+}
+
+footer .info span {
+    font-size: .6rem;
+    font-weight: 400;
+}
+
+.total__celulas {
+    background-color: #70ff83;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+.total__celulas p{
+    font-size: 0.9rem;
+    font-weight: 700;
+}
