@@ -65,7 +65,7 @@ function selecionaArea() {
 //### Função que converte csv para um kml com seus poligonos
 function convertCSVtoLeaflet() {
     const local = searchUF.value
-    const url = 'https://raw.githubusercontent.com/raeldosbeats/kmzrcs/main/csv/' + local + '.csv'
+    const url = 'https://raw.githubusercontent.com/timercs/kmz/main/csv/' + local + '.csv'
 
     fetch(url)
         .then(response => response.text())
