@@ -87,6 +87,8 @@ function convertCSVtoLeaflet() {
 
                     results.data.forEach(function (row) {
 
+                        console.log(row);
+
                         if (row.coordinates && row.uf === searchUF.value) {
                             var coordinates = row.coordinates.split(' ').map(function (coord) {
                                 var latlng = coord.split(',');
@@ -110,15 +112,23 @@ function convertCSVtoLeaflet() {
                                 fillColor = 'blue';
                             }
 
+                            if(row.cell_status_sales === 'Bloqueado'){
+                                fillColor = 'black';
+                            }
+                            
                             var popupContent = `
-                            <strong>Name: </strong>${row.name}<br>
+                            <strong>Name: </strong>${row.cell}<br>
                             <strong>UF: </strong>${row.uf}<br>
-                            <strong>Country: </strong>${row.country}<br>
+                            <strong>Country: </strong>${row.city}<br>
                             <strong>Locality: </strong>${row.locality}<br>
                             <strong>Station: </strong>${row.station}<br>
+                            <strong>Aging: </strong>${row.aging}<br>
                             <strong>Cell Classification: </strong>${row.cell_classification}<br>
+                            <strong>Cell Sales Status: </strong>${row.cell_status_sales}<br>
                             <strong>HC: </strong>${row.hc}<br>
                             <strong>HP: </strong>${row.hp}<br>
+                            <strong>HP Viable: </strong>${row.hp_viable}<br>
+                            <strong>HP Viable Total: </strong>${row.hp_viable_total}<br>
                             <strong>Ocup (%): </strong>${(pOcup * 100).toFixed(1)}%<br>
                             <strong>HC Expected: </strong>${row.hc_expected}<br>
                             <strong>Achievement (%): </strong>${(pAchievement * 100).toFixed(1)}%<br>
