@@ -8,7 +8,6 @@
 }
 
 body {
-    min-height: 100vh;
     position: relative;
 }
 
@@ -19,7 +18,7 @@ body {
 
 header {
     width: 100%;
-    height: 125px;
+    height: auto;
     background-color: #222;
     display: flex;
     flex-direction: column;
@@ -27,6 +26,7 @@ header {
     align-items: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     z-index: 1;
+    padding: 20px 0;
 }
 
 header .logo {
@@ -34,12 +34,11 @@ header .logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px 0;
 
 }
 
 header .logo h1 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #eee;
 }
 
@@ -52,7 +51,7 @@ header .search {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
 }
 
 header .search select {
@@ -64,12 +63,12 @@ header .search select {
 }
 
 header .search button {
-    padding: 7px 20px;
+    padding: 5px 20px;
     background-color: #70ff83;
     color: #1f1f1f;
     border: none;
     outline: none;
-    border-radius: 10px;
+    border-radius: 7px;
     transition: .2s;
     font-weight: 700;
 }
@@ -112,16 +111,34 @@ footer .info span {
 }
 
 .total__celulas {
-    background-color: #70ff83;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    padding: 0 20px;
-    border-radius: 10px;
+    padding: 5px 20px;
+    
 }
 
 .total__celulas p{
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 500;
+    color: #e9e9e9;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+nav > a{
+    text-decoration: underline;
+    color: #999;
+    font-size: .9rem;
+}
+
+nav > a:hover{
+    color: white;
 }
