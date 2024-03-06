@@ -87,8 +87,6 @@ function convertCSVtoLeaflet() {
 
                     results.data.forEach(function (row) {
 
-                        console.log(row);
-
                         if (row.coordinates && row.uf === searchUF.value) {
                             var coordinates = row.coordinates.split(' ').map(function (coord) {
                                 var latlng = coord.split(',');
