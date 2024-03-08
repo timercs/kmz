@@ -43,6 +43,10 @@ header .logo h1 {
     color: #eee;
 }
 
+header .logo p{
+    color: white;
+}
+
 header .logo span {
     color: #eee;
 }
