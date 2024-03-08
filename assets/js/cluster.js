@@ -106,7 +106,7 @@ function convertCSVtoLeaflet() {
                             }
 
                             if(row.cell_status_sales === 'Bloqueado'){
-                                fillColor = 'black';
+                                fillColor = 'red';
                             }
                             
                             var popupContent = `
