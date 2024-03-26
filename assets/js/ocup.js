@@ -122,22 +122,26 @@ function convertCSVtoLeaflet() {
                             });
 
                             //### Definindo a cor com base no percentual de ocupação
-                            var cluster = row.cell_classification
+                            var ocup = row.ocup.replace(',', '.');
+                            var pOcup = row.ocup.replace(',', '.');
                             var fillColor;
 
-                            if (cluster === 'OURO') {
+                            if (ocup > 0.25) {
+                                fillColor = 'blue';
+                            } else if (ocup > 0.125 && ocup <= 0.25) {
+                                fillColor = 'green';
+                            } else if (ocup > 0.065 && ocup <= 0.125) {
                                 fillColor = 'yellow';
-                            } else if (cluster === 'PRATA') {
-                                fillColor = '#c0c0c0';
-                            } else if (cluster === 'BRONZE') {
-                                fillColor = '#88540b';
-                            } else if (cluster === 'N/I') {
-                                fillColor = '#88540b';
+                            } else if (ocup <= 0.065) {
+                                fillColor = 'red';
+                            } else if (ocup === 0) {
+                                fillColor = 'purple';
+                            } else {
+                                fillColor = 'white';
                             }
-                            
 
-                            if(row.cell_status_sales === 'Bloqueado'){
-                                fillColor = '#000';
+                            if(ocup === 'Bloqueado'){
+                                fillColor = 'black';
                             }
                             
                             var popupContent = `

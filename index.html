@@ -17,9 +17,10 @@
                 <h1>KMZ RCS</h1>
             </div>
             <div class="subtitle">
-                <h4>% Ating/Meta. & Bloqueadas</h4>
+                <h4>% Ating/Ref. & Bloqueadas</h4>
             </div>            
         </div>
+
         <div class="search">
             <select onchange="selecionaArea()" id="meuSelect">
                 <option value="" disabled selected>UF</option>
@@ -35,18 +36,16 @@
                 <option value="TO">TO</option>
               </select>
             <button onclick="convertCSVtoLeaflet()">Gerar KMZ</button>
-            <p onclick="visualizarLegenda()"><i class="bi bi-compass"></i></p>
+            <p title="Legenda" onclick="visualizarLegenda()"><i class="bi bi-compass"></i></p>
         </div>
-        <nav>
-            <!-- <a href="./cluster.html">Acessar KMZ por (Cluster)</a> -->
-            
+        <nav>            
 
             <div class="total__celulas">
                 <p id="countCells"></p>
             </div>
 
             <div class="searchEndereco">
-                <input type="text" id="searchInput" placeholder="Digite um endereço...">
+                <input type="text" id="searchInput" placeholder="Digite um Município/Endereço...">
                 <button onclick="searchAddress()">
                     <i class="bi bi-search"></i>
                 </button>
@@ -57,7 +56,7 @@
     
         <div id="modal" class="legenda modal">
             <div class="image">
-                <img src="./assets/img/legend-ocup.jpeg" alt="">
+                <img src="./assets/img/legend-ating.png" alt="">
                 <button id="closeModal" onclick="closeModal()">x</button>
             </div>
         </div>
