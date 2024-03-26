@@ -62,6 +62,34 @@ function selecionaArea() {
     }
 }
 
+
+//### Função para buscar endereço
+
+function searchAddress() {
+    var searchText = document.getElementById('searchInput').value;
+
+    fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + searchText)
+    .then(response => response.json())
+    .then(data => {
+        if (data && data.length > 0) {
+            var result = data[0];
+            var lat = result.lat;
+            var lon = result.lon;
+
+            map.setView([lat, lon], 15);
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup(searchText)
+                .openPopup();
+        } else {
+            alert('Endereço não encontrado');
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao buscar endereço:', error);
+        alert('Erro ao buscar endereço');
+    });
+}
+
 //### Função que converte csv para um kml com seus poligonos
 function convertCSVtoLeaflet() {
     const local = searchUF.value
@@ -110,28 +138,28 @@ function convertCSVtoLeaflet() {
                             }
                             
                             var popupContent = `
-                            <strong>Name: </strong>${row.cell}<br>
+                            <strong>Célula: </strong>${row.cell}<br>
                             <strong>UF: </strong>${row.uf}<br>
-                            <strong>Country: </strong>${row.city}<br>
-                            <strong>Locality: </strong>${row.locality}<br>
-                            <strong>Station: </strong>${row.station}<br>
+                            <strong>Município: </strong>${row.city}<br>
+                            <strong>Localidade: </strong>${row.locality}<br>
+                            <strong>Estação: </strong>${row.station}<br>
                             <strong>Aging: </strong>${row.aging}<br>
-                            <strong>Cell Classification: </strong>${row.cell_classification}<br>
-                            <strong>Cell Sales Status: </strong>${row.cell_status_sales}<br>
+                            <strong>Cluster Célula: </strong>${row.cell_classification}<br>
+                            <strong>Status Célula Venda: </strong>${row.cell_status_sales}<br>
                             <strong>HC: </strong>${row.hc}<br>
                             <strong>HP: </strong>${row.hp}<br>
-                            <strong>HP Viable: </strong>${row.hp_viable}<br>
-                            <strong>HP Viable Total: </strong>${row.hp_viable_total}<br>
+                            <strong>HP Viável: </strong>${row.hp_viable}<br>
+                            <strong>HP Viável Total: </strong>${row.hp_viable_total}<br>
                             <strong>Ocup (%): </strong>${(row.ocup * 100).toFixed(1)}%<br>
-                            <strong>HC Expected: </strong>${row.hc_expected}<br>
-                            <strong>Achievement (%): </strong>${(row.achievement * 100).toFixed(1)}%<br>
+                            <strong>HC Esperado: </strong>${row.hc_expected}<br>
+                            <strong>Atingimento/Meta (%): </strong>${(row.achievement * 100).toFixed(1)}%<br>
                             `;
 
                             //### Adicionando polígono ao mapa
                             L.polygon(coordinates, {
                                 color: '#444',
                                 fillColor: fillColor,
-                                fillOpacity: 0.4,
+                                fillOpacity: 0.6,
                                 weight: 2
                             }).addTo(map).bindPopup(popupContent);
                         }

@@ -12,7 +12,7 @@ body {
 }
 
 #map {
-    height: 600px;
+    height: calc(100vh - 232px);
     z-index: 0;
 }
 
@@ -26,25 +26,29 @@ header {
     align-items: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     z-index: 1;
-    padding: 20px 0;
+    padding-top: 10px;
 }
 
-header .logo {
+header .logo .title {
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
 }
 
-header .logo h1 {
+header .logo .title h1 {
     font-size: 1.2rem;
     color: #eee;
 }
 
-header .logo p{
-    color: white;
+header .logo .subtitle{
+    margin-bottom: 10px;
+}
+
+header .logo .subtitle h4 {
+    font-weight: normal;
+    font-size: .8rem;
+    color: #eee;
 }
 
 header .logo span {
@@ -56,7 +60,7 @@ header .search {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
 }
 
 header .search select {
@@ -76,6 +80,16 @@ header .search button {
     border-radius: 7px;
     transition: .2s;
     font-weight: 700;
+}
+
+header .search p{
+    font-size: 1.2rem;
+    color: #eee;
+    cursor: pointer;
+}
+
+header .search p:hover{
+    color: #ccc;
 }
 
 header .search button:hover {
@@ -119,8 +133,6 @@ footer .info span {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
-    padding: 5px 20px;
     
 }
 
@@ -147,3 +159,100 @@ nav > a{
 nav > a:hover{
     color: white;
 }
+
+nav button{
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #ccc;
+    text-decoration: underline;
+    transition: .2s;
+}
+
+nav button:hover{
+    color: #eee;
+}
+
+.legenda{    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .9);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal{
+    display: none!important;
+}
+
+.legenda .image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    position: relative;
+}
+
+.image img{
+    border-radius: 20px;
+}
+
+.image button{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #444;
+    cursor: pointer;
+}
+
+.image button:hover{
+    color: #666;
+}
+
+
+
+.legenda img{
+    max-width: 600px;
+    width: 90vw;
+}
+
+.searchEndereco{
+    background-color: #70ff83;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.searchEndereco input{
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
+    width: 300px;
+    font-weight: 700;
+    padding-left: 5px;
+    
+}
+
+.searchEndereco button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.2rem;
+}
+
+
+
