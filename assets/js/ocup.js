@@ -1,6 +1,11 @@
 //### variável que captura id para selecionar UF
 let searchUF = document.getElementById('meuSelect');
 let searchCell = document.getElementById('selectCell');
+var pAchievement;
+var pOcup;
+var kmlContent;
+var fillColor;
+var fillColorARGB;
 
 var map = L.map('map').setView([-21.061122, -57.355898], 4);
 
@@ -62,38 +67,43 @@ function selecionaArea() {
     }
 }
 
-
 //### Função para buscar endereço
 
 function searchAddress() {
-    var searchText = document.getElementById('searchInput').value;
+    const searchText = document.getElementById('searchInput').value;
 
     fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + searchText)
-    .then(response => response.json())
-    .then(data => {
-        if (data && data.length > 0) {
-            var result = data[0];
-            var lat = result.lat;
-            var lon = result.lon;
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.length > 0) {
+                var result = data[0];
+                var lat = result.lat;
+                var lon = result.lon;
 
-            map.setView([lat, lon], 15);
-            L.marker([lat, lon]).addTo(map)
-                .bindPopup(searchText)
-                .openPopup();
-        } else {
-            alert('Endereço não encontrado');
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao buscar endereço:', error);
-        alert('Erro ao buscar endereço');
-    });
+                map.setView([lat, lon], 15);
+                L.marker([lat, lon]).addTo(map)
+                    .bindPopup(searchText)
+                    .openPopup();
+            } else {
+                alert('Endereço não encontrado');
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao buscar endereço:', error);
+            alert('Erro ao buscar endereço');
+        });
+
 }
 
 //### Função que converte csv para um kml com seus poligonos
 function convertCSVtoLeaflet() {
     const local = searchUF.value
     const url = 'https://raw.githubusercontent.com/timercs/kmz/main/csv/' + local + '.csv'
+
+    if (searchUF.value != 'UF') {
+        //### Liberar Botão de Download
+        document.getElementById('btnDownload').removeAttribute('disabled')
+    }
 
     fetch(url)
         .then(response => response.text())
@@ -106,7 +116,12 @@ function convertCSVtoLeaflet() {
                 header: true,
                 delimiter: ',',
                 complete: function (results) {
-                    
+
+                    //### Criando KML para download
+                    kmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n';
+                    kmlContent += '<kml xmlns="http://www.opengis.net/kml/2.2">\n';
+                    kmlContent += '  <Document>\n';
+
                     //### Contabiliza o total de células ativas
                     const totalCells = results.data.length
 
@@ -122,28 +137,28 @@ function convertCSVtoLeaflet() {
                             });
 
                             //### Definindo a cor com base no percentual de ocupação
-                            var ocup = row.ocup.replace(',', '.');
-                            var pOcup = row.ocup.replace(',', '.');
-                            var fillColor;
+                            pAchievement = row.achievement.replace(',', '.');
+                            ocup = row.ocup.replace(',', '.');
+
 
                             if (ocup > 0.25) {
-                                fillColor = 'blue';
+                                fillColor = '#0000FF';
                             } else if (ocup > 0.125 && ocup <= 0.25) {
-                                fillColor = 'green';
+                                fillColor = '#008000';
                             } else if (ocup > 0.065 && ocup <= 0.125) {
-                                fillColor = 'yellow';
+                                fillColor = '#FFFF00';
                             } else if (ocup <= 0.065) {
-                                fillColor = 'red';
+                                fillColor = '#FF0000';
                             } else if (ocup === 0) {
-                                fillColor = 'purple';
+                                fillColor = '#732E9B';
                             } else {
-                                fillColor = 'white';
+                                fillColor = '#FFFFFF';
                             }
 
                             if(row.cell_status_sales === 'Bloqueado'){
-                                fillColor = 'black';
+                                fillColor = '#000000';
                             }
-                            
+
                             var popupContent = `
                             <strong>Célula: </strong>${row.cell}<br>
                             <strong>UF: </strong>${row.uf}<br>
@@ -152,28 +167,124 @@ function convertCSVtoLeaflet() {
                             <strong>Estação: </strong>${row.station}<br>
                             <strong>Aging: </strong>${row.aging}<br>
                             <strong>Cluster Célula: </strong>${row.cell_classification}<br>
-                            <strong>Status Célula Venda: </strong>${row.cell_status_sales}<br>
+                            <strong>Status Venda Célula: </strong>${row.cell_status_sales}<br>
                             <strong>HC: </strong>${row.hc}<br>
                             <strong>HP: </strong>${row.hp}<br>
                             <strong>HP Viável: </strong>${row.hp_viable}<br>
                             <strong>HP Viável Total: </strong>${row.hp_viable_total}<br>
-                            <strong>Ocup (%): </strong>${(row.ocup * 100).toFixed(1)}%<br>
+                            <strong>Ocup (%): </strong>${(ocup * 100).toFixed(1)}%<br>
                             <strong>HC Esperado: </strong>${row.hc_expected}<br>
-                            <strong>Atingimento/Meta (%): </strong>${(row.achievement * 100).toFixed(1)}%<br>
+                            <strong>Atingimento/Meta (%): </strong>${(pAchievement * 100).toFixed(1)}%<br>
                             `;
 
                             //### Adicionando polígono ao mapa
                             L.polygon(coordinates, {
-                                color: '#444',
+                                color: '#000000',
                                 fillColor: fillColor,
                                 fillOpacity: 0.6,
                                 weight: 2
                             }).addTo(map).bindPopup(popupContent);
+
+
+                            // Construir o conteúdo do polígono KML com estilo e informações do popup
+                            var polygonKML = '<Placemark>\n';
+                            polygonKML += '  <name>' + row.name + '</name>\n';
+                            polygonKML += '  <description><![CDATA[' + getPopupContent(row) + ']]></description>\n'; // Adicionar informações do popup como descrição
+                            polygonKML += '  <Style>\n';
+                            polygonKML += '    <LineStyle>\n';
+                            polygonKML += '      <color>99000000</color>\n'; // Converter cor para formato hexadecimal
+                            polygonKML += '      <width>2</width>\n'; // Definir a largura da borda do polígono (substitua "2" pelo valor desejado)
+                            polygonKML += '    </LineStyle>\n';
+                            polygonKML += '    <PolyStyle>\n';
+                            polygonKML += '      <color>99' + invertHexColor(getColorHex(fillColor)) + '</color>\n'; // Converter cor para formato hexadecimal
+                            polygonKML += '    </PolyStyle>\n';
+                            polygonKML += '  </Style>\n';
+                            polygonKML += '  <Polygon>\n';
+                            polygonKML += '    <outerBoundaryIs>\n';
+                            polygonKML += '      <LinearRing>\n';
+                            polygonKML += '        <coordinates>\n';
+                            polygonKML += '          ' + row.coordinates + '\n';
+                            polygonKML += '        </coordinates>\n';
+                            polygonKML += '      </LinearRing>\n';
+                            polygonKML += '    </outerBoundaryIs>\n';
+                            polygonKML += '  </Polygon>\n';
+                            polygonKML += '</Placemark>\n';
+
+                            kmlContent += polygonKML;
                         }
-                    });                    
+                    });
+
+                    kmlContent += '  </Document>\n';
+                    kmlContent += '</kml>';
                 }
             });
         })
         .catch(error => console.error('Erro ao buscar o arquivo CSV:', error));
 }
+
+// Função para construir o conteúdo do popup
+function getPopupContent(row) {
+    var popupContent = `
+    <strong>Célula: </strong>${row.cell}<br>
+    <strong>UF: </strong>${row.uf}<br>
+    <strong>Município: </strong>${row.city}<br>
+    <strong>Localidade: </strong>${row.locality}<br>
+    <strong>Estação: </strong>${row.station}<br>
+    <strong>Aging: </strong>${row.aging}<br>
+    <strong>Cluster Célula: </strong>${row.cell_classification}<br>
+    <strong>Status Venda Célula: </strong>${row.cell_status_sales}<br>
+    <strong>HC: </strong>${row.hc}<br>
+    <strong>HP: </strong>${row.hp}<br>
+    <strong>HP Viável: </strong>${row.hp_viable}<br>
+    <strong>HP Viável Total: </strong>${row.hp_viable_total}<br>
+    <strong>Ocup (%): </strong>${(pOcup * 100).toFixed(1)}%<br>
+    <strong>HC Esperado: </strong>${row.hc_expected}<br>
+    <strong>Atingimento/Meta (%): </strong>${(pAchievement * 100).toFixed(1)}%<br>
+    `;
+    // Adicionar outras informações conforme necessário
+    return popupContent;
+}
+
+// Função para efetuar o download do kml gerado
+function downloadKML() {
+    if (kmlContent) {
+        var blob = new Blob([kmlContent], { type: 'application/vnd.google-earth.kml+xml' });
+        var link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = searchUF.value + '.kml';
+        link.click();
+    } else {
+        console.error('O conteúdo KML está vazio ou indefinido.');
+    }
+}
+
+// Função para converter uma cor em formato RGB para hexadecimal
+function getColorHex(color) {
+    return color.substring(1); // Remover o caractere '#' do início da string
+}
+
+//### Função para inverter os caracteres de uma cor no formato hexadecimal
+function invertHexColor(hexColor) {
+    // Remover o caractere '#' se estiver presente
+    hexColor = hexColor.replace('#', '');
+
+    // Dividir a string em pares de caracteres
+    var pairs = hexColor.match(/.{1,2}/g);
+
+    // Inverter a ordem dos pares
+    var invertedPairs = pairs.reverse();
+
+    // Juntar os pares invertidos e retornar
+    return invertedPairs.join('');
+}
+
+
+
+
+
+
+
+
+
+
 

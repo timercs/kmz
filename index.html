@@ -52,6 +52,7 @@
               </select>
             <button onclick="convertCSVtoLeaflet()">Gerar KMZ</button>
             <p title="Legenda" onclick="visualizarLegenda()"><i class="bi bi-compass"></i></p>
+            <button id="btnDownload" title="Baixar" onclick="downloadKML()" disabled><i class="bi bi-download"></i></button>
         </div>
         <nav>            
 
@@ -90,6 +91,5 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="./assets/js/script.js"></script>
-
 </body>
 </html>

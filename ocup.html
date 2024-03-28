@@ -33,7 +33,7 @@
             </div>
             <div class="subtitle">
                 <h4>% Ocupação & Bloqueadas</h4>
-            </div>
+            </div>            
         </div>
 
         <div class="search">
@@ -51,10 +51,11 @@
                 <option value="TO">TO</option>
               </select>
             <button onclick="convertCSVtoLeaflet()">Gerar KMZ</button>
-            <p onclick="visualizarLegenda()"><i class="bi bi-compass"></i></p>
+            <p title="Legenda" onclick="visualizarLegenda()"><i class="bi bi-compass"></i></p>
+            <button id="btnDownload" title="Baixar" onclick="downloadKML()" disabled><i class="bi bi-download"></i></button>
         </div>
-        <nav>         
-        
+        <nav>            
+
             <div class="total__celulas">
                 <p id="countCells"></p>
             </div>
@@ -65,9 +66,9 @@
                     <i class="bi bi-search"></i>
                 </button>
             </div>
-
         </nav>
-    </header>   
+        
+    </header>  
     
         <div id="modal" class="legenda modal">
             <div class="image">
