@@ -41,7 +41,7 @@ header .logo .title h1 {
     color: #eee;
 }
 
-header .logo .subtitle{
+header .logo .subtitle {
     margin-bottom: 10px;
 }
 
@@ -82,13 +82,13 @@ header .search button {
     font-weight: 700;
 }
 
-header .search p{
+header .search p {
     font-size: 1.2rem;
     color: #eee;
     cursor: pointer;
 }
 
-header .search p:hover{
+header .search p:hover {
     color: #ccc;
 }
 
@@ -133,10 +133,10 @@ footer .info span {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
-.total__celulas p{
+.total__celulas p {
     font-size: 0.8rem;
     font-weight: 500;
     color: #e9e9e9;
@@ -150,17 +150,17 @@ nav {
     margin-top: 10px;
 }
 
-nav > a{
+nav>a {
     text-decoration: underline;
     color: #999;
     font-size: .9rem;
 }
 
-nav > a:hover{
+nav>a:hover {
     color: white;
 }
 
-nav button{
+nav button {
     cursor: pointer;
     background-color: transparent;
     outline: none;
@@ -170,42 +170,42 @@ nav button{
     transition: .2s;
 }
 
-nav button:hover{
+nav button:hover {
     color: #eee;
 }
 
-.legenda{    
+.legenda {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: rgba(0, 0, 0, .7);
     z-index: 500;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.modal{
-    display: none!important;
+.modal {
+    display: none !important;
 }
 
-.legenda .image{
+.legenda .image {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.image{
+.image {
     position: relative;
 }
 
-.image img{
+.image img {
     border-radius: 20px;
 }
 
-.image button{
+.image button {
     position: absolute;
     top: 5px;
     right: 15px;
@@ -218,18 +218,18 @@ nav button:hover{
     cursor: pointer;
 }
 
-.image button:hover{
+.image button:hover {
     color: #666;
 }
 
 
 
-.legenda img{
+.legenda img {
     max-width: 600px;
     width: 90vw;
 }
 
-.searchEndereco{
+.searchEndereco {
     background-color: #70ff83;
     display: flex;
     justify-content: center;
@@ -238,21 +238,18 @@ nav button:hover{
     position: relative;
 }
 
-.searchEndereco input{
+.searchEndereco input {
     height: 30px;
     font-family: 'Roboto', sans-serif;
     width: 300px;
     font-weight: 700;
     padding-left: 5px;
-    
+
 }
 
-.searchEndereco button{
+.searchEndereco button {
     position: absolute;
     top: 5px;
     right: 5px;
     font-size: 1.2rem;
 }
-
-
-

@@ -140,7 +140,7 @@ function convertCSVtoLeaflet() {
                                 fillColor = 'white';
                             }
 
-                            if(ocup === 'Bloqueado'){
+                            if(row.cell_status_sales === 'Bloqueado'){
                                 fillColor = 'black';
                             }
                             
