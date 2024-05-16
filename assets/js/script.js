@@ -60,6 +60,8 @@ function selecionaArea() {
         map.flyTo([-29.473087, -53.562250], 8);
     } else if (searchUF.value === 'SC') {
         map.flyTo([-27.292730, -50.322588], 8);
+    } else if (searchUF.value === 'SP') {
+        map.flyTo([-23.035381, -47.244555], 8);
     } else if (searchUF.value === 'TO') {
         map.flyTo([-10.573403, -48.410903], 8);
     } else {
