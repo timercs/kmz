@@ -1,4 +1,4 @@
-r//### variável que captura id para selecionar UF
+//### variável que captura id para selecionar UF
 let searchUF = document.getElementById('meuSelect');
 let searchCell = document.getElementById('selectCell');
 var pAchievement;
