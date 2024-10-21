@@ -1,4 +1,4 @@
-//### variável que captura id para selecionar UF
+r//### variável que captura id para selecionar UF
 let searchUF = document.getElementById('meuSelect');
 let searchCell = document.getElementById('selectCell');
 var pAchievement;
@@ -100,7 +100,7 @@ function searchAddress() {
 //### Função que converte csv para um kml com seus poligonos
 function convertCSVtoLeaflet() {
     const local = searchUF.value
-    const url = 'https://gitlab.com/devppnacional/csv/-/raw/main/' + local + '.csv'
+    const url = 'https://gitlab.com/caveirastodosportodos/csv/-/raw/main/' + local + '.csv'
 
     if (searchUF.value != 'UF') {
         //### Liberar Botão de Download
