@@ -100,7 +100,7 @@ function searchAddress() {
 //### Função que converte csv para um kml com seus poligonos
 function convertCSVtoLeaflet() {
     const local = searchUF.value
-    const url = 'https://gitlab.com/caveirastodosportodos/csv/-/raw/main/' + local + '.csv'
+    const url = 'https://raw.githubusercontent.com/timercs/kmz/main/csv/' + local + '.csv'
 
     if (searchUF.value != 'UF') {
         //### Liberar Botão de Download
