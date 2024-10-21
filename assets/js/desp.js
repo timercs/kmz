@@ -114,7 +114,7 @@ function convertCSVtoLeaflet() {
             Papa.parse(csvData, {
                 //download: true,
                 header: true,
-                delimiter: ',',
+                delimiter: ';',
                 complete: function (results) {
 
                     //### Criando KML para download
