@@ -44,22 +44,54 @@ function selecionaArea() {
 
     if (searchUF.value === 'AC') {
         map.flyTo([-9.980685, -67.821007], 12);
+    } else if (searchUF.value === 'AL') {
+        map.flyTo([-9.391924, -36.110148], 10);    
+    } else if (searchUF.value === 'AP') {
+        map.flyTo([-0.013368, -51.051405], 10);
+    } else if (searchUF.value === 'AM') {
+        map.flyTo([-3.034696, -59.595759], 10);
+    } else if (searchUF.value === 'BA') {
+        map.flyTo([-13.275918, -42.005200], 10);
     } else if (searchUF.value === 'DF') {
         map.flyTo([-15.79, -47.84], 10);
+    } else if (searchUF.value === 'CE') {
+        map.flyTo([-5.273720, -39.235478], 10);
+    } else if (searchUF.value === 'ES') {
+        map.flyTo([-19.470548, -40.404962], 10);
     } else if (searchUF.value === 'GO') {
         map.flyTo([-16.485171, -49.314644], 10);
+    } else if (searchUF.value === 'MA') {
+        map.flyTo([-4.005181, -45.093773], 10);
+    } else if (searchUF.value === 'MG') {
+        map.flyTo([-19.291117, -44.515861], 10);
     } else if (searchUF.value === 'MS') {
         map.flyTo([-20.375768, -56.054876], 7);
     } else if (searchUF.value === 'MT') {
         map.flyTo([-13.573902, -55.464816], 7);
+    } else if (searchUF.value === 'PA') {
+        map.flyTo([-3.411390, -48.541634], 7);
+    } else if (searchUF.value === 'PB') {
+        map.flyTo([-7.034142, -35.522918], 7);
     } else if (searchUF.value === 'PR') {
         map.flyTo([-24.372087, -51.363347], 8);
+    } else if (searchUF.value === 'PE') {
+        map.flyTo([-8.284773, -37.411572], 8);
+    } else if (searchUF.value === 'PI') {
+        map.flyTo([-4.503365, -42.222373], 8);
     } else if (searchUF.value === 'RO') {
         map.flyTo([-10.435862, -62.003264], 8);
+    } else if (searchUF.value === 'RJ') {
+        map.flyTo([-22.280543, -42.595983], 8);
+    } else if (searchUF.value === 'RN') {
+        map.flyTo([-5.311147, -36.162405], 8);
+    } else if (searchUF.value === 'RR') {
+        map.flyTo([-2.492081, -60.421696], 8);
     } else if (searchUF.value === 'RS') {
         map.flyTo([-29.473087, -53.562250], 8);
     } else if (searchUF.value === 'SC') {
         map.flyTo([-27.292730, -50.322588], 8);
+    } else if (searchUF.value === 'SE') {
+        map.flyTo([-10.495383, -37.142802], 8);
     } else if (searchUF.value === 'SP') {
         map.flyTo([-23.035381, -47.244555], 8);
     } else if (searchUF.value === 'TO') {
