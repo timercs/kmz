@@ -262,7 +262,7 @@ function getPopupContent(row) {
     <strong>Célula: </strong>${row.cell}<br>
     <strong>UF: </strong>${row.uf}<br>
     <strong>Município: </strong>${row.city}<br>
-    <strong>Localidade: </strong>${row.locality}<br>
+    <strong>Prioridade: </strong>${row.cod_city_ibge}<br>
     <strong>Estação: </strong>${row.station}<br>
     <strong>Aging: </strong>${row.aging}<br>
     <strong>Cluster Célula: </strong>${row.cell_classification}<br>
@@ -271,7 +271,7 @@ function getPopupContent(row) {
     <strong>HP: </strong>${row.hp}<br>
     <strong>HP Viável: </strong>${row.hp_viable}<br>
     <strong>HP Viável Total: </strong>${row.hp_viable_total}<br>
-    <strong>Ocup (%): </strong>${(pOcup * 100).toFixed(1)}%<br>
+    <strong>Ocup (%): </strong>${(ocup * 100).toFixed(1)}%<br>
     <strong>HC Esperado: </strong>${row.hc_expected}<br>
     <strong>Atingimento/Meta (%): </strong>${(pAchievement * 100).toFixed(1)}%<br>
     `;
@@ -311,6 +311,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
