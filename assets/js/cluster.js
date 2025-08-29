@@ -174,15 +174,15 @@ function convertCSVtoLeaflet() {
                             pAchievement = row.achievement.replace(',', '.');
                             pOcup = row.ocup.replace(',', '.');
 
-                            var cluster = row.cell_classification
+                            var majority_group = row.cell_classification
 
-                            if (cluster === 'OURO') {
+                            if (majority_group === 'ALTO') {
                                 fillColor = '#FFFF00';
-                            } else if (cluster === 'PRATA') {
+                            } else if (majority_group === 'MEDIO') {
                                 fillColor = '#c0c0c0';
-                            } else if (cluster === 'BRONZE') {
+                            } else if (majority_group === 'BAIXO') {
                                 fillColor = '#88540b';
-                            } else if (cluster === 'N/I') {
+                            } else if (majority_group === 'ERRO') {
                                 fillColor = '#88540b';
                             }
                             
@@ -195,7 +195,7 @@ function convertCSVtoLeaflet() {
                             <strong>Célula: </strong>${row.cell}<br>
                             <strong>UF: </strong>${row.uf}<br>
                             <strong>Município: </strong>${row.city}<br>
-                            <strong>Prioridade: </strong>${row.cod_city_ibge}<br>
+                            <strong>Classificacao: </strong>${row.majority_group}<br>
                             <strong>Estação: </strong>${row.station}<br>
                             <strong>Aging: </strong>${row.aging}<br>
                             <strong>Cluster Célula: </strong>${row.cell_classification}<br>
@@ -309,6 +309,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
