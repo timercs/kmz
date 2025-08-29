@@ -174,7 +174,7 @@ function convertCSVtoLeaflet() {
                             pAchievement = row.achievement.replace(',', '.');
                             pOcup = row.ocup.replace(',', '.');
 
-                            var majority_group = row.cell_classification
+                            var majority_group = row.majority_group
 
                             if (majority_group === 'ALTO') {
                                 fillColor = '#FFFF00';
@@ -309,6 +309,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
