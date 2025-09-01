@@ -260,7 +260,7 @@ function getPopupContent(row) {
     <strong>Célula: </strong>${row.cell}<br>
     <strong>UF: </strong>${row.uf}<br>
     <strong>Município: </strong>${row.city}<br>
-    <strong>Prioridade: </strong>${row.cod_city_ibge}<br>
+    <strong>Classificação: </strong>${row.majority_group}<br>
     <strong>Estação: </strong>${row.station}<br>
     <strong>Aging: </strong>${row.aging}<br>
     <strong>Cluster Célula: </strong>${row.cell_classification}<br>
@@ -309,6 +309,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
