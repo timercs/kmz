@@ -173,6 +173,10 @@ function convertCSVtoLeaflet() {
                             //### Definindo a cor com base no percentual de ocupação
                             pAchievement = row.achievement.replace(',', '.');
                             ocup = row.ocup.replace(',', '.');
+                            
+                              if(row.cell_status_sales === 'Bloqueado'){
+                                fillColor = '#000000';
+                            }
 
 
                             if (ocup > 0.25) {
@@ -189,9 +193,11 @@ function convertCSVtoLeaflet() {
                                 fillColor = '#FFFFFF';
                             }
 
-                            if(row.cell_status_sales === 'Bloqueado'){
+                               if(row.cell_status_sales === 'Bloqueado'){
                                 fillColor = '#000000';
                             }
+
+                          
 
                             var popupContent = `
                             <strong>Célula: </strong>${row.cell}<br>
@@ -311,6 +317,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
