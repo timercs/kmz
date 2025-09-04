@@ -215,7 +215,7 @@ function convertCSVtoLeaflet() {
 
                             //### Adicionando polígono ao mapa
                             L.polygon(coordinates, {
-                                color: '#000000',
+                                color: '#FFFFFF',
                                 fillColor: fillColor,
                                 fillOpacity: 0.6,
                                 weight: 2
@@ -313,6 +313,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
