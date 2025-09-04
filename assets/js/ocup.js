@@ -181,14 +181,7 @@ function convertCSVtoLeaflet() {
                                 fillColor = '#0000FF';
                             } else if (ocup > 0.125 && ocup <= 0.25) {
                                 fillColor = '#008000';
-                            } else if (ocup > 0.065 && ocup <= 0.125) {
-                                fillColor = '#FFFF00';
-                            } else if (ocup <= 0.065) {
-                                fillColor = '#FF0000';
-                            } else if (hc === 0) {
-                                fillColor = '#732E9B';
-                            } else {
-                                fillColor = '#FFFFFF';
+                          
                             }
 
                                if(row.cell_status_sales === 'Bloqueado'){
@@ -315,6 +308,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
