@@ -185,7 +185,7 @@ function convertCSVtoLeaflet() {
                                 fillColor = '#FFFF00';
                             } else if (ocup <= 0.065) {
                                 fillColor = '#FF0000';
-                            } else if (ocup === 0) {
+                            } else if (hc === 0) {
                                 fillColor = '#732E9B';
                             } else {
                                 fillColor = '#FFFFFF';
@@ -315,6 +315,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
