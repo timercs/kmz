@@ -174,9 +174,7 @@ function convertCSVtoLeaflet() {
                             pAchievement = row.achievement.replace(',', '.');
                             ocup = row.ocup.replace(',', '.');
                             
-                              if(row.cell_status_sales === 'Bloqueado'){
-                                fillColor = '#000000';
-                            }
+                        
 
 
                             if (ocup > 0.25) {
@@ -317,6 +315,7 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
 
 
 
