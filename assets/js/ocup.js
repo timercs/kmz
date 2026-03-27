@@ -193,6 +193,10 @@ function convertCSVtoLeaflet() {
                                 fillColor = '#000000';
                             }
 
+                                if(row.cell_status_sales === 'Semi bloqueado'){
+                                fillColor = '#000000';
+                            }
+
                           
 
                             var popupContent = `
