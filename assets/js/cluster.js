@@ -184,10 +184,11 @@ function convertCSVtoLeaflet() {
                                 fillColor = '#88540b';
                             } else if (majority_group === 'ERRO') {
                                 fillColor = '#88540b';
-                            }
+                            } if (majority_group === 'Semi Bloqueado') {
+                                fillColor = '#000000';
                             
 
-                            if(row.cell_status_sales === 'Bloqueado'){
+                           } if(row.cell_status_sales === 'Bloqueado'){
                                 fillColor = '#000000';
                             }
 
