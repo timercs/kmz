@@ -176,12 +176,9 @@ function convertCSVtoLeaflet() {
 
                             var majority_group = row.majority_group
 
-                            if (majority_group === 'Semi Bloqueado') {
-                                fillColor = '#000000';
-                            
-
-                           } else if(row.cell_status_sales === 'Bloqueado'){
-                                fillColor = '#000000';
+                            if (majority_group === 'Semi bloqueado') {
+                                fillColor = '#964b00';
+                           
                            }else if (majority_group === 'ALTO') {
                                 fillColor = '#FFFF00';
                             } else if (majority_group === 'MEDIO') {
@@ -191,7 +188,8 @@ function convertCSVtoLeaflet() {
                             } else if (majority_group === 'ERRO') {
                                 fillColor = '#88540b';
                             } 
-
+                            if(row.cell_status_sales === 'Bloqueado'){
+                                fillColor = '#000000';}
                             var popupContent = `
                             <strong>Célula: </strong>${row.cell}<br>
                             <strong>UF: </strong>${row.uf}<br>
