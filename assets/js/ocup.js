@@ -175,9 +175,15 @@ function convertCSVtoLeaflet() {
                             ocup = row.ocup.replace(',', '.');
                             
                         
+                          if(row.cell_status_sales === 'Bloqueado'){
+                                fillColor = '#000000';
+                            }
 
+                             else   if(row.cell_status_sales === 'Semi bloqueado'){
+                                fillColor = '#000000';
+                            }
 
-                            if (ocup > 0.25) {
+                           else if  (ocup > 0.25) {
                                 fillColor = '#0000FF';
                             } else if (ocup > 0.125 && ocup <= 0.25) {
                                 fillColor = '#008000';
@@ -189,13 +195,7 @@ function convertCSVtoLeaflet() {
                                 fillColor = '#FFFFFF';
                             }
 
-                               if(row.cell_status_sales === 'Bloqueado'){
-                                fillColor = '#000000';
-                            }
-
-                                if(row.cell_status_sales === 'Semi bloqueado'){
-                                fillColor = '#000000';
-                            }
+                             
 
                           
 
