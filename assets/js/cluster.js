@@ -178,7 +178,6 @@ function convertCSVtoLeaflet() {
 
                             if (majority_group === 'Semi bloqueado') {
                                 fillColor = '#964b00';
-                           
                            }else if (majority_group === 'ALTO') {
                                 fillColor = '#FFFF00';
                             } else if (majority_group === 'MEDIO') {
