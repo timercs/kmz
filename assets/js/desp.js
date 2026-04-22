@@ -178,7 +178,9 @@ function convertCSVtoLeaflet() {
 
                             if (priority === 'Semi bloqueado') {
                                 fillColor = '#FF4000';
-                           }else if (priority === '1') {
+                           }else if (priority === '0') {
+                                fillColor = '#000000';
+                                 }else if (priority === '1') {
                                 fillColor = '#FFFF00';
                             } else if (priority === '2') {
                                 fillColor = '#c0c0c0';
