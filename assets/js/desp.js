@@ -261,7 +261,7 @@ function getPopupContent(row) {
     <strong>Classificação: </strong>${row.majority_group}<br>
     <strong>Estação: </strong>${row.station}<br>
     <strong>Aging: </strong>${row.aging}<br>
-    <strong>Cluster Célula: </strong>${row.cell_classification}<br>
+     <strong>Prioridade: </strong>${row.Priority}<br>
     <strong>Status Venda Célula: </strong>${row.cell_status_sales}<br>
     <strong>HC: </strong>${row.hc}<br>
     <strong>HP: </strong>${row.hp}<br>
