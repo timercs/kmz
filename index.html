@@ -2,18 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="KMZ RCSP | P&P">
-    <meta property="og:description" content="Mapas com células ativas da regional CS">
-    <meta property="og:image" content="./assets/img/map.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="500">
-    <meta property="og:image:height" content="500">
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:url" content="https://timercs.github.io/kmz/">
-    <meta property="og:site_name" content="KMZ RCSP">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KMZ PP Web Ating/Ref. & Bloqueadas</title>
+    <title>KMZ PP Web Ocup. & Bloqueadas</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/menu.css">
@@ -25,6 +15,7 @@
     <link rel="manifest" href="./assets/img//site.webmanifest">
 </head>
 <body>
+
     <!--
     <div style="
         
@@ -47,8 +38,9 @@
     <div id="menu" class="menu">
         <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">&times;</a>
         <a href="./index.html"><i class="bi bi-house-door"></i> Home</a>
-        <a href="./cluster.html"><i class="bi bi-globe-americas"></i> OPB</a>
+        <a href="./cluster.html"><i class="bi bi-globe-americas"></i> Classificação</a>
         <a href="./ocup.html"><i class="bi bi-globe-americas"></i> % Ocupação</a>
+         <a href="./desp.html"><i class="bi bi-globe-americas"></i> Prioridade</a>
     </div>
 
     <header>
@@ -58,7 +50,7 @@
                 <h1>KMZ PP Nacional</h1>
             </div>
             <div class="subtitle">
-                <h4>% Ating/Ref. & Bloqueadas</h4>
+                <h4>% Ocupação & Bloqueadas</h4>
             </div>            
         </div>
 
@@ -115,7 +107,7 @@
     
         <div id="modal" class="legenda modal">
             <div class="image">
-                <img src="./assets/img/legend-ating.png" alt="">
+                <img src="./assets/img/legend-ocup.png" alt="">
                 <button id="closeModal" onclick="closeModal()">&times;</button>
             </div>
         </div>
@@ -124,15 +116,30 @@
 
     <footer>
         <div class="info">
-            <p>© KMZ PP Desenvolvido por Israel Moura</p>
-            <span>Time de Planejamento e Perfomance 2024</span>
-            <span>Versão 1.0.2</span>
+            <p>© KMZ PP </p>
+            <span>Time de Perfomance Canais</span>
+            <span>Atualizado 27/03/2026</span>
         </div>
     </footer>
     <script src="./assets/js/menu.js"></script>
     <script src="./assets/js/modal.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/ocup.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
