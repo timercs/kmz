@@ -44,22 +44,56 @@ function selecionaArea() {
 
     if (searchUF.value === 'AC') {
         map.flyTo([-9.980685, -67.821007], 12);
+    } else if (searchUF.value === 'AL') {
+        map.flyTo([-9.391924, -36.110148], 10);    
+    } else if (searchUF.value === 'AP') {
+        map.flyTo([-0.013368, -51.051405], 10);
+    } else if (searchUF.value === 'AM') {
+        map.flyTo([-3.034696, -59.595759], 10);
+    } else if (searchUF.value === 'BA') {
+        map.flyTo([-13.275918, -42.005200], 10);
     } else if (searchUF.value === 'DF') {
         map.flyTo([-15.79, -47.84], 10);
+    } else if (searchUF.value === 'CE') {
+        map.flyTo([-5.273720, -39.235478], 10);
+    } else if (searchUF.value === 'ES') {
+        map.flyTo([-19.470548, -40.404962], 10);
     } else if (searchUF.value === 'GO') {
         map.flyTo([-16.485171, -49.314644], 10);
+    } else if (searchUF.value === 'MA') {
+        map.flyTo([-4.005181, -45.093773], 10);
+    } else if (searchUF.value === 'MG') {
+        map.flyTo([-19.291117, -44.515861], 10);
     } else if (searchUF.value === 'MS') {
         map.flyTo([-20.375768, -56.054876], 7);
     } else if (searchUF.value === 'MT') {
         map.flyTo([-13.573902, -55.464816], 7);
+    } else if (searchUF.value === 'PA') {
+        map.flyTo([-3.411390, -48.541634], 7);
+    } else if (searchUF.value === 'PB') {
+        map.flyTo([-7.034142, -35.522918], 7);
     } else if (searchUF.value === 'PR') {
         map.flyTo([-24.372087, -51.363347], 8);
+    } else if (searchUF.value === 'PE') {
+        map.flyTo([-8.284773, -37.411572], 8);
+    } else if (searchUF.value === 'PI') {
+        map.flyTo([-4.503365, -42.222373], 8);
     } else if (searchUF.value === 'RO') {
         map.flyTo([-10.435862, -62.003264], 8);
+    } else if (searchUF.value === 'RJ') {
+        map.flyTo([-22.280543, -42.595983], 8);
+    } else if (searchUF.value === 'RN') {
+        map.flyTo([-5.311147, -36.162405], 8);
+    } else if (searchUF.value === 'RR') {
+        map.flyTo([-2.492081, -60.421696], 8);
     } else if (searchUF.value === 'RS') {
         map.flyTo([-29.473087, -53.562250], 8);
     } else if (searchUF.value === 'SC') {
         map.flyTo([-27.292730, -50.322588], 8);
+    } else if (searchUF.value === 'SE') {
+        map.flyTo([-10.495383, -37.142802], 8);
+    } else if (searchUF.value === 'SP') {
+        map.flyTo([-23.035381, -47.244555], 8);
     } else if (searchUF.value === 'TO') {
         map.flyTo([-10.573403, -48.410903], 8);
     } else {
@@ -98,7 +132,7 @@ function searchAddress() {
 //### Função que converte csv para um kml com seus poligonos
 function convertCSVtoLeaflet() {
     const local = searchUF.value
-    const url = 'https://raw.githubusercontent.com/timercs/kmz/main/csv/desp/' + local + '.csv'
+    const url = 'https://raw.githubusercontent.com/timercs/kmz/main/csv/' + local + '.csv'
 
     if (searchUF.value != 'UF') {
         //### Liberar Botão de Download
@@ -140,22 +174,26 @@ function convertCSVtoLeaflet() {
                             pAchievement = row.achievement.replace(',', '.');
                             pOcup = row.ocup.replace(',', '.');
 
+                            var majority_group = row.majority_group
 
-                            if (pAchievement >= 0 ) {
-                                fillColor = '#FF0000';
-                            } else {
-                                fillColor = '#0000FF';
-                            }
-
-                            // if (row.cell_status_sales === 'Bloqueado') {
-                            //     fillColor = '#000000';
-                            // }
-
+                            if (majority_group === 'Semi bloqueado') {
+                                fillColor = '#FF4000';
+                           }else if (majority_group === 'ALTO') {
+                                fillColor = '#FFFF00';
+                            } else if (majority_group === 'MEDIO') {
+                                fillColor = '#c0c0c0';
+                            } else if (majority_group === 'BAIXO') {
+                                fillColor = '#88540b';
+                            } else if (majority_group === 'ERRO') {
+                                fillColor = '#88540b';
+                            } 
+                            if(row.cell_status_sales === 'Bloqueado'){
+                                fillColor = '#000000';}
                             var popupContent = `
                             <strong>Célula: </strong>${row.cell}<br>
                             <strong>UF: </strong>${row.uf}<br>
                             <strong>Município: </strong>${row.city}<br>
-                            <strong>Localidade: </strong>${row.locality}<br>
+                            <strong>Classificacao: </strong>${row.majority_group}<br>
                             <strong>Estação: </strong>${row.station}<br>
                             <strong>Aging: </strong>${row.aging}<br>
                             <strong>Cluster Célula: </strong>${row.cell_classification}<br>
@@ -220,7 +258,7 @@ function getPopupContent(row) {
     <strong>Célula: </strong>${row.cell}<br>
     <strong>UF: </strong>${row.uf}<br>
     <strong>Município: </strong>${row.city}<br>
-    <strong>Localidade: </strong>${row.locality}<br>
+    <strong>Classificação: </strong>${row.majority_group}<br>
     <strong>Estação: </strong>${row.station}<br>
     <strong>Aging: </strong>${row.aging}<br>
     <strong>Cluster Célula: </strong>${row.cell_classification}<br>
@@ -243,7 +281,7 @@ function downloadKML() {
         var blob = new Blob([kmlContent], { type: 'application/vnd.google-earth.kml+xml' });
         var link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = 'ATING_REF_' + searchUF.value + '.kml';
+        link.download = searchUF.value + '.kml';
         link.click();
     } else {
         console.error('O conteúdo KML está vazio ou indefinido.');
@@ -269,6 +307,11 @@ function invertHexColor(hexColor) {
     // Juntar os pares invertidos e retornar
     return invertedPairs.join('');
 }
+
+
+
+
+
 
 
 
