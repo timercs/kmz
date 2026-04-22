@@ -174,18 +174,18 @@ function convertCSVtoLeaflet() {
                             pAchievement = row.achievement.replace(',', '.');
                             pOcup = row.ocup.replace(',', '.');
 
-                            var majority_group = row.majority_group
+                            var priority = row.Priority
 
-                            if (majority_group === 'Semi bloqueado') {
+                            if (priority === 'Semi bloqueado') {
                                 fillColor = '#FF4000';
-                           }else if (majority_group === 'ALTO') {
+                           }else if (priority === '1') {
                                 fillColor = '#FFFF00';
-                            } else if (majority_group === 'MEDIO') {
+                            } else if (priority === '2') {
                                 fillColor = '#c0c0c0';
-                            } else if (majority_group === 'BAIXO') {
+                            } else if (priority === '3') {
                                 fillColor = '#88540b';
-                            } else if (majority_group === 'ERRO') {
-                                fillColor = '#88540b';
+                            } else if (priority === '4') {
+                                fillColor = '#cf0804';
                             } 
                             if(row.cell_status_sales === 'Bloqueado'){
                                 fillColor = '#000000';}
