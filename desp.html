@@ -2,18 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="KMZ RCSP | P&P">
-    <meta property="og:description" content="Mapas com células ativas da regional CS">
-    <meta property="og:image" content="./assets/img/map.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="500">
-    <meta property="og:image:height" content="500">
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:url" content="https://timeRCSP.github.io/kmz/">
-    <meta property="og:site_name" content="KMZ RCSP">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KMZ RCSP Web Células Despriorizadas</title>
+    <title>KMZ PP Web Classificação & Bloqueadas</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/menu.css">
@@ -26,23 +16,41 @@
 </head>
 <body>
 
+    <!--
+    <div style="
+        
+        width: 100%;
+        background-color: #ffcc00;
+        color: #333;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 16px;
+        font-weight: bold;
+        z-index: 1000;
+        border-bottom: 2px solid #ff9900;
+        ">
+            ⚠️ O sistema KMZ Web está passando por instabilidade devido à inserção de novas UFs. Estamos trabalhando para resolver o problema.
+        </div>
+    -->
+
     <div class="menu-btn" onclick="openMenu()">&#9776;</div>
 
     <div id="menu" class="menu">
         <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">&times;</a>
         <a href="./index.html"><i class="bi bi-house-door"></i> Home</a>
-        <a href="./cluster.html"><i class="bi bi-globe-americas"></i> OPB</a>
+        <a href="./cluster.html"><i class="bi bi-globe-americas"></i> Classificação</a>
         <a href="./ocup.html"><i class="bi bi-globe-americas"></i> % Ocupação</a>
+        <a href="./desp.html"><i class="bi bi-globe-americas"></i> Prioridade</a>
     </div>
 
     <header>
         <div class="logo">
             <div class="title">
                 <span class="material-symbols-outlined">travel_explore</span>
-                <h1>KMZ RCSP</h1>
+                <h1>KMZ PP Nacional</h1>
             </div>
             <div class="subtitle">
-                <h4>Células Despriorizadas</h4>
+                <h4>Classificação & Bloqueadas</h4>
             </div>            
         </div>
 
@@ -50,14 +58,31 @@
             <select onchange="selecionaArea()" id="meuSelect">
                 <option value="" disabled selected>UF</option>
                 <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
                 <option value="DF">DF</option>
+                <option value="CE">CE</option>
+                <option value="ES">ES</option>
                 <option value="GO">GO</option>
-                <option value="MS">MS</option>
+                <option value="MA">MA</option>
                 <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
                 <option value="PR">PR</option>
-                <option value="RO">RO</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
                 <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
                 <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
                 <option value="TO">TO</option>
               </select>
             <button onclick="convertCSVtoLeaflet()">Gerar KMZ</button>
@@ -82,7 +107,7 @@
     
         <div id="modal" class="legenda modal">
             <div class="image">
-                <img src="./assets/img/legend-ating.png" alt="">
+                <img src="./assets/img/legend-opb.png" alt="">
                 <button id="closeModal" onclick="closeModal()">&times;</button>
             </div>
         </div>
@@ -91,15 +116,29 @@
 
     <footer>
         <div class="info">
-            <p>© KMZ RCSP Desenvolvido por Israel Moura</p>
-            <span>Time de Planejamento e Perfomance RCSP 2024</span>
-            <span>Versão 1.0.2</span>
+            <p>© KMZ PP</p>
+            <span>Time de Perfomance Canais</span>
+            <span>Atualizado 27/03/2026</span>
         </div>
     </footer>
     <script src="./assets/js/menu.js"></script>
     <script src="./assets/js/modal.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script src="./assets/js/desp.js"></script>
+    <script src="./assets/js/cluster.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
